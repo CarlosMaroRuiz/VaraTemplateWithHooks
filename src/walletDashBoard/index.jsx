@@ -1,5 +1,5 @@
 
-import { useWalletManagement } from '../App/wallet/useWalletManagement'
+import { useWalletManagement } from '../App/wallet/hooks/useWalletManagement'
 import WalletInfo from './components/WalletInfo'
 import TransactionForm from './components/TransactionForm'
 import WalletGenerator from './components/WalletGenerator'

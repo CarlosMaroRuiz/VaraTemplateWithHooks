@@ -1,26 +1,41 @@
 import {
     ApiProvider as GearApiProvider,
-    AccountProvider as GearAccountProvider,
+    AccountProvider as GearAccountProvider,useApi
   } from '@gear-js/react-hooks'
   import { BrowserRouter } from 'react-router-dom'
-import { NODE_ADDRESS } from '../shared/constants'
+import { NODE_ADDRESS } from '../shared/constants';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '../shared/constants/queryClient';
   function ApiProvider({ children }) {
+   
+   
     return (
-      <GearApiProvider initialArgs={{ endpoint: NODE_ADDRESS }}>
+      <QueryClientProvider client={queryClient}>
+ <GearApiProvider initialArgs={{ endpoint: NODE_ADDRESS }}>
         {children}
       </GearApiProvider>
+      </QueryClientProvider>
+     
     )
   }
   
   const providers = [
     BrowserRouter,
     ApiProvider,
-    GearAccountProvider
+    GearAccountProvider,
+    
   ]
   
   export function withProviders(Component) {
-    return () => providers.reduceRight(
-      (children, Provider) => <Provider>{children}</Provider>,
-      <Component />
-    )
+    return () => {
+      
+
+      return providers.reduceRight(
+        (children, Provider) => {
+         
+          return <Provider>{children}</Provider>;
+        },
+        <Component />
+      );
+    };
   }

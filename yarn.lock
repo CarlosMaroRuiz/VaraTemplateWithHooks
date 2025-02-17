@@ -373,10 +373,10 @@
   resolved "https://registry.yarnpkg.com/@gear-js/vara-ui/-/vara-ui-0.0.10.tgz#306927c0ed3ea59800ea382d689df31d873fe26e"
   integrity sha512-5f6FamMaRNM1uF6X8qZwVVf5p/tS0S8/0x+O/wr+2bnDL4qlK+kBhhhuGzIyBATFoEDOo1fKvEriHnuOFw/GSA==
 
-"@gear-js/wallet-connect@0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@gear-js/wallet-connect/-/wallet-connect-0.2.3.tgz#a3a2ad1dd09eded2e256684eb345dbf09349ef67"
-  integrity sha512-yE4VRSStAACof9fTQ5ybl2SXcbhgZSHOeI04sUfKyKMnwHxnR30R8P909AwwLVQnxlbgWzIivXdgxRRf3Lx3SQ==
+"@gear-js/wallet-connect@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@gear-js/wallet-connect/-/wallet-connect-0.3.0.tgz#58e3a9631bc270902d83fd66c497ec599b567a2b"
+  integrity sha512-BZ9PHAyWS9S0/5BfNwqVJaB7dATqsDdfi90OfL/ayHJ5sPKdCxvicyVYiCnrNjiV3kh8UVo3sjx37FTCoMpnlg==
 
 "@humanwhocodes/config-array@^0.13.0":
   version "0.13.0"
@@ -1603,17 +1603,29 @@
     "@svgr/hast-util-to-babel-ast" "8.0.0"
     svg-parser "^2.0.4"
 
-"@tanstack/query-core@5.66.0":
-  version "5.66.0"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.66.0.tgz#163f670b3b4e3b3cdbff6698ad44b2edfcaed185"
-  integrity sha512-J+JeBtthiKxrpzUu7rfIPDzhscXF2p5zE/hVdrqkACBP8Yu0M96mwJ5m/8cPPYQE9aRNvXztXHlNwIh4FEeMZw==
+"@tanstack/query-core@5.59.16":
+  version "5.59.16"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.59.16.tgz#aa4616e8a9c12afeef4cfbf3ed0f55f404d66e67"
+  integrity sha512-crHn+G3ltqb5JG0oUv6q+PMz1m1YkjpASrXTU+sYWW9pLk0t2GybUHNRqYPZWhxgjPaVGC4yp92gSFEJgYEsPw==
 
-"@tanstack/react-query@5.66.0":
-  version "5.66.0"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.66.0.tgz#9f7aa1b3e844ea6a0ad2ee61fccaed76e614b865"
-  integrity sha512-z3sYixFQJe8hndFnXgWu7C79ctL+pI0KAelYyW+khaNJ1m22lWrhJU2QrsTcRKMuVPtoZvfBYrTStIdKo+x0Xw==
+"@tanstack/react-query@5.59.16":
+  version "5.59.16"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.59.16.tgz#1e701c6e6681965c04aa426df9da54b8edc6db1b"
+  integrity sha512-MuyWheG47h6ERd4PKQ6V8gDyBu3ThNG22e1fRVwvq6ap3EqsFhyuxCAwhNP/03m/mLg+DAb0upgbPaX6VB+CkQ==
   dependencies:
-    "@tanstack/query-core" "5.66.0"
+    "@tanstack/query-core" "5.59.16"
+
+"@tanstack/react-table@8.9.3":
+  version "8.9.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.9.3.tgz#03a52e9e15f65c82a8c697a445c42bfca0c5cfc4"
+  integrity sha512-Ng9rdm3JPoSCi6cVZvANsYnF+UoGVRxflMb270tVj0+LjeT/ZtZ9ckxF6oLPLcKesza6VKBqtdF9mQ+vaz24Aw==
+  dependencies:
+    "@tanstack/table-core" "8.9.3"
+
+"@tanstack/table-core@8.9.3":
+  version "8.9.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.9.3.tgz#991da6b015f6200fdc841c48048bee5e197f6a46"
+  integrity sha512-NpHZBoHTfqyJk0m/s/+CSuAiwtebhYK90mDuf5eylTvgViNOujiaOaxNDxJkQQAsVvHWZftUGAx1EfO1rkKtLg==
 
 "@types/babel__core@^7.20.5":
   version "7.20.5"
@@ -4720,6 +4732,11 @@ sails-js-parser@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/sails-js-parser/-/sails-js-parser-0.0.1.tgz#88cec48cab33be54b8364313fdcc53393670aa56"
   integrity sha512-N1ab0Hl5xdYufDCGP7pB5Zxyvoqjxh8rH8Df3nQTlgIW7y+SH3kYedW7RLmZnDO6KEI8ArtPtXID+MLiQkRh8g==
+
+sails-js-parser@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/sails-js-parser/-/sails-js-parser-0.3.1.tgz#f671bfb5b9c50ce31c97249252fb79719fc310d5"
+  integrity sha512-G/ITC8perMP2j6hs2ePDZcowndMoOtKaFxLHjfwBuZ948ttLuTNP7QpJxbp7KzEZzRX5iS2Tw3dwoTsiiiSVTg==
 
 sails-js@0.3.1:
   version "0.3.1"

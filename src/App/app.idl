@@ -1,0 +1,138 @@
+type KeyringData = struct {
+  address: str,
+  encoded: str,
+};
+
+type KeyringEvent = enum {
+  KeyringAccountSet,
+  Error: KeyringError,
+};
+
+type KeyringError = enum {
+  KeyringAddressAlreadyEsists,
+  UserAddressAlreadyExists,
+  UserCodedNameAlreadyExists,
+  UserDoesNotHasKeyringAccount,
+  KeyringAccountAlreadyExists,
+  SessionHasInvalidCredentials,
+  UserAndKeyringAddressAreTheSame,
+};
+
+type KeyringQueryEvent = enum {
+  LastWhoCall: actor_id,
+  SignlessAccountAddress: opt actor_id,
+  SignlessAccountData: opt KeyringData,
+};
+
+type Capitulo = struct {
+  id: i32,
+  nombre: str,
+  url: str,
+};
+
+type Events = enum {
+  AuthorCreated: str,
+  MangaCreated: str,
+  NftCRATED: str,
+  VnftCreated: str,
+  NftSold: str,
+  LectorCreated: str,
+  Error: str,
+};
+
+type TokenMetadata = struct {
+  name: str,
+  description: str,
+  media: str,
+  reference: str,
+};
+
+type Autor = struct {
+  id: actor_id,
+  nombre: str,
+  email: str,
+  foto_perfil: str,
+  descripcion: str,
+  idioma_origen: str,
+  ingresos_totales: u128,
+  donaciones_recibidas: u64,
+  fecha_registro: str,
+  ultima_actividad: str,
+  estado_cuenta: str,
+  redes_sociales: vec RedSocial,
+  preferencias_notificaciones: PreferenciasNotificaciones,
+  mangas: vec Manga,
+};
+
+type RedSocial = struct {
+  plataforma: str,
+  url: str,
+};
+
+type PreferenciasNotificaciones = struct {
+  donaciones: bool,
+  estadisticas: bool,
+  mensajes: bool,
+};
+
+type Manga = struct {
+  id: str,
+  titulo: str,
+  estado: str,
+  cantidad_capitulos: i32,
+  lecturas: i32,
+  capitulos_gratis: i32,
+  capitulos: vec Capitulo,
+};
+
+type Lector = struct {
+  id: actor_id,
+  nombre: str,
+  email: str,
+  foto_perfil: str,
+  capitulos_desbloqueados: vec CapituloDesbloqueado,
+  nfts_adquiridos: vec u128,
+};
+
+type CapituloDesbloqueado = struct {
+  capitulo_id: i32,
+  manga_id: str,
+  fecha_desbloqueo: str,
+};
+
+type Nft = struct {
+  id: u128,
+  descripcion: str,
+  precio: u128,
+  estado: str,
+  autor: actor_id,
+};
+
+constructor {
+  New : ();
+};
+
+service Keyring {
+  BindKeyringDataToUserAddress : (user_address: actor_id, keyring_data: KeyringData) -> KeyringEvent;
+  BindKeyringDataToUserCodedName : (user_coded_name: str, keyring_data: KeyringData) -> KeyringEvent;
+  query KeyringAccountData : (keyring_address: actor_id) -> KeyringQueryEvent;
+  query KeyringAddressFromUserAddress : (user_address: actor_id) -> KeyringQueryEvent;
+  query KeyringAddressFromUserCodedName : (user_coded_name: str) -> KeyringQueryEvent;
+};
+
+service Service {
+  AddManga : (id: str, titulo: str, estado: str, cantidad_capitulos: i32, capitulos_gratis: i32, capitulo: vec Capitulo) -> Events;
+  BuyNftWithId : (token_id: u128) -> Events;
+  CreateAuthor : (nombre: str, email: str) -> Events;
+  CreateLector : (nombre: str, email: str, foto_de_perfil: str) -> Events;
+  CreateNft : (token_metadata: TokenMetadata, precio: u128) -> Events;
+  PutNftContractId : (vnft_contract_id: actor_id) -> Events;
+  query GetAllAutors : () -> vec struct { actor_id, Autor };
+  query GetAllLectors : () -> vec struct { actor_id, Lector };
+  query GetByActorId : (actorid: actor_id) -> opt Autor;
+  query GetInsignias : () -> opt vec Nft;
+  query GetLectorById : (actorid: actor_id) -> opt Lector;
+  query InsigniasDeUnAutor : (autorid: actor_id) -> opt vec Nft;
+  query MyChapters : () -> opt Autor;
+};
+

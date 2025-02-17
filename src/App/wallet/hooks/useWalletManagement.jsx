@@ -48,8 +48,6 @@ export function useWalletManagement() {
       setError('Error al cargar la wallet guardada')
     }
   }
-
-  // Generar nueva semilla
   const generateNewSeed = () => {
     try {
       if (account) {
@@ -63,8 +61,6 @@ export function useWalletManagement() {
       return null
     }
   }
-
-  // Validar semilla
   const validateSeed = (seed) => {
     try {
       return mnemonicValidate(seed)
@@ -72,8 +68,6 @@ export function useWalletManagement() {
       return false
     }
   }
-
-  // Generar wallet desde semilla
   const generateWalletFromSeed = async (seedPhrase) => {
     if (account) {
       setError('Ya hay una wallet conectada vía extensión')
@@ -88,7 +82,7 @@ export function useWalletManagement() {
         throw new Error('Semilla inválida')
       }
   
-      // Cambiamos el formato a 137 que es el específico para Gear/Vara
+     
       const keyring = new Keyring({ type: 'sr25519', ss58Format: 42 })
       const newAccount = keyring.addFromUri(seedPhrase)
       
@@ -112,7 +106,6 @@ export function useWalletManagement() {
       setLoading(false)
     }
   }
-  // Enviar transacción
   const sendTransaction = async (destinationAddress, amount) => {
     if (!wallet || !isApiReady) {
       throw new Error('Wallet no inicializada o API no lista')
@@ -141,7 +134,6 @@ export function useWalletManagement() {
     }
   }
 
-  // Formatear balance
   const formatBalance = (rawBalance) => {
     if (!rawBalance) return '0'
     try {
@@ -152,7 +144,6 @@ export function useWalletManagement() {
     }
   }
 
-  // Desconectar wallet local
   const disconnect = () => {
     if (account) {
       setError('No se puede desconectar una wallet de extensión desde aquí')
@@ -164,7 +155,6 @@ export function useWalletManagement() {
     setError(null)
   }
 
-  // Verificar dirección
   const isValidAddress = useCallback((address) => {
     try {
       const keyring = new Keyring({ type: 'sr25519', ss58Format: 42 })
@@ -174,13 +164,13 @@ export function useWalletManagement() {
     }
   }, [])
 
-  // Obtener historial de transacciones
+
   const getTransactionHistory = useCallback(() => {
     return transactions
   }, [transactions])
 
   return {
-    // Estado
+
     wallet,
     account,
     loading,
@@ -188,17 +178,15 @@ export function useWalletManagement() {
     balance: isBalanceReady ? balance : null,
     transactions,
 
-    // Estado de conexión
+    
     isAccountReady,
     isApiReady,
 
-    // Funciones principales
     generateWalletFromSeed,
     generateNewSeed,
     sendTransaction,
     disconnect,
 
-    // Funciones de utilidad
     validateSeed,
     formatBalance,
     isValidAddress,
