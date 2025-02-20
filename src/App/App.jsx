@@ -2,6 +2,8 @@ import Routes from './router/routes'
 import { withProviders } from './providers/AppProviders'
 import { SailsProvider } from './providers/SailsProvider'
 import { useApi } from '@gear-js/react-hooks'
+
+
 function Component() {
   
   const { api, isApiReady } = useApi()
@@ -11,7 +13,8 @@ function Component() {
   return (
     <main className="w-full">
       <SailsProvider api={api}>
-      <Routes/>
+     
+       <Routes/> 
       </SailsProvider>
       
     </main>

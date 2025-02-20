@@ -18,10 +18,10 @@ export function SailsProvider({ children, api }) {
     const initSails = async () => {
       try {
         setLoading(true);
-        console.log('Iniciando parser...');
+    
         const parser = await SailsIdlParser.new();
         
-        console.log('Creando instancia de Sails...');
+
         const sailsInstance = new Sails(parser);
 
         if (!api) {
@@ -36,7 +36,7 @@ export function SailsProvider({ children, api }) {
           throw new Error('No se pudo cargar el archivo IDL');
         }
         const idlContent = await response.text();
-        console.log('IDL cargado');
+       
 
   
         sailsInstance.parseIdl(idlContent);
@@ -55,7 +55,7 @@ export function SailsProvider({ children, api }) {
     initSails();
   }, [api]);
 
-  if (loading) {
+  if (loading) {//Se puede personalizar
     return (
       <div className="flex items-center justify-center p-4">
         <div className="text-center">
@@ -67,7 +67,7 @@ export function SailsProvider({ children, api }) {
   }
 
   if (error) {
-    return (
+    return (//Se puede persoanlizar
       <div className="p-4 bg-red-100 text-red-700 rounded">
         <p className="font-bold">Error al inicializar Sails:</p>
         <p>{error}</p>

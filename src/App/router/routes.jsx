@@ -1,12 +1,13 @@
 import { Route, Routes as RouterRoutes } from 'react-router-dom'
+import HomePage from '../../home'
 
-import TestingPage from '../../testing'
 
 
 export default function Routes() {
   return (
     <RouterRoutes>
-      <Route path="/" element={<TestingPage/>} />
+      <Route path="/" element={<HomePage/>} />
+
     </RouterRoutes>
   )
 }
