@@ -36,7 +36,7 @@ const HomePage = () => {
           </motion.p>
           <motion.div variants={itemVariants}>
             <a
-              href='https://vara-template-with-hooks-docs.vercel.app/'
+              href='https://vara-template-with-hooks-docs-8u1sl9ktr.vercel.app'
               className="bg-white hover:bg-lime-100 text-lime-600 font-semibold py-3 px-8 rounded-lg shadow-md transition duration-300 ease-in-out inline-block"
             >
               Comenzar ahora
